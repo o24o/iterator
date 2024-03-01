@@ -18,7 +18,7 @@ type namingStrategyExtension struct {
 
 func (extension *namingStrategyExtension) UpdateStructDescriptor(structDescriptor *jsoniter.StructDescriptor) {
 	for _, binding := range structDescriptor.Fields {
-		if unicode.IsLower(rune(binding.Field.Name()[0])) || binding.Field.Name()[0] == '_'{
+		if unicode.IsLower(rune(binding.Field.Name()[0])) || binding.Field.Name()[0] == '_' {
 			continue
 		}
 		tag, hastag := binding.Field.Tag().Lookup("json")
@@ -52,4 +52,27 @@ func LowerCaseWithUnderscores(name string) string {
 		}
 	}
 	return string(newName)
+}
+
+// LowerCamelCase
+//
+//	@Description: 转小写驼峰
+//	@param name
+//	@return string
+func LowerCamelCase(name string) string {
+	return underscoreToLowerCamelCase(name)
+}
+
+// 下划线单词转为大写驼峰单词
+func underscoreToUpperCamelCase(s string) string {
+	s = strings.Replace(s, "_", " ", -1)
+	s = strings.Title(s)
+	return strings.Replace(s, " ", "", -1)
+}
+
+// 下划线单词转为小写驼峰单词
+func underscoreToLowerCamelCase(s string) string {
+	s = underscoreToUpperCamelCase(s)
+	return string(unicode.ToLower(rune(s[0]))) + s[1:]
+	return s
 }

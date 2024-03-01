@@ -2,6 +2,7 @@ package jsoniter
 
 import (
 	"encoding/base64"
+	"fmt"
 	"reflect"
 	"strconv"
 	"unsafe"
@@ -228,7 +229,8 @@ func (codec *int8Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *int8Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteInt8(*((*int8)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*int8)(ptr))))
+
 }
 
 func (codec *int8Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -245,7 +247,8 @@ func (codec *int16Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *int16Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteInt16(*((*int16)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*int16)(ptr))))
+
 }
 
 func (codec *int16Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -262,7 +265,7 @@ func (codec *int32Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *int32Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteInt32(*((*int32)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*int32)(ptr))))
 }
 
 func (codec *int32Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -279,7 +282,7 @@ func (codec *int64Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *int64Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteInt64(*((*int64)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*int64)(ptr))))
 }
 
 func (codec *int64Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -296,7 +299,7 @@ func (codec *uint8Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *uint8Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteUint8(*((*uint8)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*uint8)(ptr))))
 }
 
 func (codec *uint8Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -313,7 +316,7 @@ func (codec *uint16Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *uint16Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteUint16(*((*uint16)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*uint16)(ptr))))
 }
 
 func (codec *uint16Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -330,7 +333,7 @@ func (codec *uint32Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *uint32Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteUint32(*((*uint32)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*uint32)(ptr))))
 }
 
 func (codec *uint32Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -348,6 +351,7 @@ func (codec *uint64Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 
 func (codec *uint64Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
 	stream.WriteUint64(*((*uint64)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*uint64)(ptr))))
 }
 
 func (codec *uint64Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -364,7 +368,7 @@ func (codec *float32Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *float32Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteFloat32(*((*float32)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*float32)(ptr))))
 }
 
 func (codec *float32Codec) IsEmpty(ptr unsafe.Pointer) bool {
@@ -381,7 +385,7 @@ func (codec *float64Codec) Decode(ptr unsafe.Pointer, iter *Iterator) {
 }
 
 func (codec *float64Codec) Encode(ptr unsafe.Pointer, stream *Stream) {
-	stream.WriteFloat64(*((*float64)(ptr)))
+	stream.WriteString(fmt.Sprintf("%v", *((*float64)(ptr))))
 }
 
 func (codec *float64Codec) IsEmpty(ptr unsafe.Pointer) bool {
